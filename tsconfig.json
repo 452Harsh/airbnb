@@ -15,7 +15,7 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Header.jsx", "components/smallCard.jsx", "components/Banner.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Header.jsx", "components/smallCard.jsx", "components/Banner.jsx", "components/Login.jsx"],
   "exclude": ["node_modules"]
 }
 //pk.eyJ1IjoiaGFyc2g0NTIiLCJhIjoiY2xleWdsdWdjMDFicjN1dDdxcTk2OTMxbSJ9.pXkjE_g5uAQIZ7Bvsn1iHg
