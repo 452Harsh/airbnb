@@ -6,11 +6,14 @@ import Header from "../components/Header";
 import InfoCard from "../components/InfoCard"
 import Map from "../components/Map";
 
-function Search({searchResults}:any) {
+function Search({ searchResults }: any) {
   const router = useRouter();
-  const { location, startDate , endDate,noOfGuest}=router.query;
-  const formattedStartDate = startDate && format(new Date(startDate), "dd MMMM yy");
-  const formattedEndDate = endDate && format(new Date(endDate), "dd MMMM yy");
+  const { location, startDate, endDate, noOfGuest } = router.query;
+  const formattedStartDate =
+    startDate && !Array.isArray(startDate) ? format(new Date(startDate), "dd MMMM yy") : "";
+  const formattedEndDate =
+    endDate && !Array.isArray(endDate) ? format(new Date(endDate), "dd MMMM yy") : "";
+
   const range = `${formattedStartDate} - ${formattedEndDate}`
   return (
     <div>
@@ -26,20 +29,20 @@ function Search({searchResults}:any) {
             <p className="button">Rooms and beds</p>
             <p className="button">More Filter</p>
           </div>
-          {searchResults.map(({img,location,title,description,star,price,total}:any) => (
-            <InfoCard 
-            img = {img}
-            location = {location}
-            title={title}
-            description = {description}
-            star={star}
-            price={price}
-            total={total}
+          {searchResults.map(({ img, location, title, description, star, price, total }: any) => (
+            <InfoCard
+              img={img}
+              location={location}
+              title={title}
+              description={description}
+              star={star}
+              price={price}
+              total={total}
             />
           ))}
         </section>
         <section className="hidden xl:inline-flex">
-          <Map/>
+          <Map />
         </section>
       </main>
       <Footer />
@@ -50,9 +53,9 @@ function Search({searchResults}:any) {
 export default Search;
 
 export async function getServerSideProps() {
-  const searchResults = await fetch("https://www.jsonkeeper.com/b/5NPS").then(res=>res.json());
+  const searchResults = await fetch("https://www.jsonkeeper.com/b/5NPS").then(res => res.json());
   return {
-    props : {
+    props: {
       searchResults,
     }
   }
